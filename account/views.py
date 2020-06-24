@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import User
 from django.http import HttpResponse
 
@@ -13,15 +13,16 @@ def register(request):
         new_username = request.POST.get('username')
         new_password = request.POST.get('password')
         nwe_id = request.POST.get('id')
-        #new_user=models.User(username = new_username,password = new_password,id=nwe_id)
-        #new_user.save()
-        models.User.objects.create(
-            username=new_username,
-            password=new_password,
-            id=nwe_id,
-        )
-        user_lis = models.User.objects.all()
-        return
+        if User.objects.filter(username=new_username):
+            return render(request,'Done1.html')
+        else:
+            models.User.objects.create(
+                username=new_username,
+                password=new_password,
+                id=nwe_id,
+            )
+            user_lis = models.User.objects.all()
+            return redirect('http://127.0.0.1:8000/user/login')
     return render(request,"register.html")
 
 def detail(request):
