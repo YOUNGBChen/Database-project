@@ -5,6 +5,9 @@ from django.http import HttpResponse
 # Create your views here.
 from account import models
 
+def index(request):
+    return render(request, 'index.html')
+
 def register(request):
     if request.method == "POST":
         new_username = request.POST.get('username')
@@ -18,6 +21,7 @@ def register(request):
             id=nwe_id,
         )
         user_lis = models.User.objects.all()
+        return
     return render(request,"register.html")
 
 def detail(request):
