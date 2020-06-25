@@ -38,3 +38,6 @@ def detail(request):
         else:
             return HttpResponse("用户名不存在，请返回注册")
     return render(request,"login.html")
+
+def not_exist(request):
+    return render(request,'notexist2.html')

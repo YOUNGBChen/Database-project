@@ -143,7 +143,7 @@
 <body>
 	<div class="htmleaf-container">
 		<header class="htmleaf-header">
-			<h1><span>图书馆管理</span></h1>
+			<h1><span>还书</span></h1>
 
 		</header>
 		<div class="demo form-bg" style="padding: 20px 0;">
@@ -152,7 +152,7 @@
 		                <div class="col-md-offset-3 col-md-6">
 							<form class="form-horizontal" method="POST" >
 								{% csrf_token %}
-		                        <span class="heading">借书</span>
+		                        <span class="heading">还书</span>
 		                        <div class="form-group">
 		                            <input type="text" class="form-control" name="username" value="{{ username }}" placeholder="账号">
 		                            <i class="fa fa-user"></i>
@@ -169,7 +169,7 @@
 		                                <input type="checkbox" value="None" id="checkbox1" name="check"/>
 		                                <label for="checkbox1"></label>
 		                            </div>
-		                            <span class="text">Remember Return Book</span>
+		                            <span class="text">Bye</span>
 		                            <button type="submit" class="btn btn-default" value="login">确认</button>
 		                        </div>
 		                    </form>
