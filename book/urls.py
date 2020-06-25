@@ -11,4 +11,5 @@ urlpatterns = [
     path('check/',views.checkbook),
     path('success/',views.success),
     path('borrowed/', views.checkbook),
+    path('money/', views.money),
 ]

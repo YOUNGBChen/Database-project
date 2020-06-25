@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render,redirect
-from .models import book
+from book.models import bbook
 from django.http import HttpResponse
-from book import models
+from book import models as md
 from account import models
 from account.models import User
 
@@ -27,20 +27,20 @@ def add(request):
         new_publish = request.POST.get('publish')
         new_sort = request.POST.get('sort')
         new_year = request.POST.get('year')
-        models.book.objects.create(
-            ISBN = new_ISBN ,
-            name = new_name ,
+        md.bbook.objects.create(
+            ISBN = new_ISBN,
+            name = new_name,
             writer = new_writer,
             publish = new_publish,
             sort = new_sort,
             year = new_year,
         )
-        book_lis = models.book.objects.all()
+        book_lis = md.bbook.objects.all()
         return redirect('http://127.0.0.1:8000/book')
     return render(request,"Book.html")
 
 def show(request):
-    books = book.objects.all()
+    books = bbook.objects.all()
     return render(request,"List.html",{'books':books})
 
 def borrow(request):
@@ -52,7 +52,7 @@ def borrow(request):
         sum = userss.borrowed
         id = userss.idcard
         if users:
-            book.objects.filter(name = name).update(username = username)
+            bbook.objects.filter(name = name).update(username = username)
             if (id == '0') :
                 if sum<5 :
                     sum = sum + 1
@@ -98,4 +98,5 @@ def checkbook(request):
         return render(request, "List2.html", {'books': books})
     return render(request,'Check_login.html')
 
-
+def money():
+    return HttpResponse('15yuan')

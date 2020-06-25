@@ -32,7 +32,7 @@ def detail(request):
         if User.objects.filter(username=username):
             user = User.objects.filter(username = username,password = password)
             if user:
-                return HttpResponse('登陆成功')
+                return redirect('http://127.0.0.1:8000/book')
             else:
                 return HttpResponse("密码错误，请尝试重新登陆")
         else:
