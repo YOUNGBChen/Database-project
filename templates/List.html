@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<style>
+    .table11_3 table {
+        width:100%;
+        margin:15px 0;
+        border:0;
+    }
+    .table11_3 th {
+        background-color:#FF5675;
+        color:#FFFFFF;
+    }
+    .table11_3,.table11_3 th,.table11_3 td {
+        font-size:1.50em;
+        text-align:center;
+        padding:4px;
+        border-collapse:collapse;
+
+    }
+    .table11_3 th,.table11_3 td {
+        border: 1px solid #fe2047;
+        border-width:1px 0 1px 0;
+        border:2px inset #ffffff;
+    }
+    .table11_3 tr {
+        border: 1px solid #ffffff;
+    }
+    .table11_3 tr:nth-child(odd){
+        background-color:#fec6d1;
+    }
+    .table11_3 tr:nth-child(even){
+        background-color:#ffffff;
+    }
+</style>
+            <table class=table11_3>
+       			<thead>
+                    <tr>
+                        <th>isbn</th>
+                        <th>name</th>
+                        <th>writer</th>
+                        <th>publish</th>
+                        <th>sort</th>
+                        <th>year</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.ISBN }}</td>
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.writer }}</td>
+                        <td>{{ book.publish }}</td>
+                        <td>{{ book.sort }}</td>
+                        <td>{{ book.year }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
