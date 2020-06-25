@@ -12,14 +12,14 @@ def register(request):
     if request.method == "POST":
         new_username = request.POST.get('username')
         new_password = request.POST.get('password')
-        nwe_id = request.POST.get('id')
+        new_idcard = request.POST.get('idcard')
         if User.objects.filter(username=new_username):
             return render(request,'Done1.html')
         else:
             models.User.objects.create(
                 username=new_username,
                 password=new_password,
-                id=nwe_id,
+                idcard=new_idcard,
             )
             user_lis = models.User.objects.all()
             return redirect('http://127.0.0.1:8000/user/login')
