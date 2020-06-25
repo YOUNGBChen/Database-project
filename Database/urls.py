@@ -19,8 +19,10 @@ from django.urls import path
 from django.conf import settings
 from django.views.static import serve
 from account import urls
+from book import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/',include('account.urls'))
+    path('user/',include('account.urls')),
+    path('book/',include('book.urls'))
 ]

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <title>管理员-录入图书信息</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- //for-mobile-apps -->
+
+    <script type="text/javascript" href="{% static"js/jquery.min.js"%}"></script>
+
+    <link href="{% static"css/style4.css"%}" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+<div class="main">
+	<h1>管理员-录入图书信息</h1>
+	<div class="agileinfo_main_grid">
+		<form action="#" method="post">
+			<div class="styled-input">
+				<input type="text" name="ISBN" placeholder="ISBN" value="{{ ISBN }}" />
+				<span></span>
+			</div>
+
+			<div class="styled-input">
+				<input type="text" name="Name" placeholder="Book_Name" value="{{ name }}" />
+				<span></span>
+			</div>
+			
+			<div class="styled-input">
+				<input type="text" name="Writer" placeholder="Book_Writer" value="{{ writer }}" />
+				<span></span>
+			</div>
+			
+			<div class="clear"></div>
+			
+			<div class="styled-input">
+				<input type="text" name="Publish" placeholder="Book_Publish" value="{{ publish }}" />
+				<span></span>
+			</div>
+			<div class="styled-input">
+				<input type="email" name="Year" placeholder="Book_Year" value="{{ year }}" />
+				<span></span>
+			</div>
+			<div class="styled-input">
+				<input type="text" name="Sort" placeholder="Book_Sort" value="{{ sort}}" />
+				<span></span>
+			</div>
+			
+			<div class="clear"></div>
+	
+			<input type="submit" value="发送消息" />
+		</form>
+	</div>
+	
+	<div class="agileits_copyright">
+		<p>Designed By BC</p>
+	</div>
+</div>
+
+<script type="text/javascript" src="{% static"js/rangeslider.min.js"%}"></script>
+<script type="text/javascript">
+$(function() {
+	var $document = $(document);
+	var selector = '[data-rangeslider]';
+	var $element = $(selector);
+	var textContent = ('textContent' in document) ? 'textContent': 'innerText';
+	function valueOutput(element) {
+		var value = element.value;
+		var output = element.parentNode.getElementsByTagName('output')[0] || element.parentNode.parentNode.getElementsByTagName('output')[0];
+		output[textContent] = value;
+	}
+	$document.on('input', 'input[type="range"], ' + selector,
+	function(e) {
+		valueOutput(e.target);
+	});
+	$document.on('click', '#js-example-disabled button[data-behaviour="toggle"]',
+	function(e) {
+		var $inputRange = $(selector, e.target.parentNode);
+		if ($inputRange[0].disabled) {
+			$inputRange.prop("disabled", false);
+		} else {
+			$inputRange.prop("disabled", true);
+		}
+		$inputRange.rangeslider('update');
+	});
+	$document.on('click', '#js-example-change-value button',
+	function(e) {
+		var $inputRange = $(selector, e.target.parentNode);
+		var value = $('input[type="number"]', e.target.parentNode)[0].value;
+		$inputRange.val(value).change();
+	});
+	$document.on('click', '#js-example-change-attributes button',
+	function(e) {
+		var $inputRange = $(selector, e.target.parentNode);
+		var attributes = {
+			min: $('input[name="min"]', e.target.parentNode)[0].value,
+			max: $('input[name="max"]', e.target.parentNode)[0].value,
+			step: $('input[name="step"]', e.target.parentNode)[0].value
+		};
+		$inputRange.attr(attributes);
+		$inputRange.rangeslider('update', true);
+	});
+	$document.on('click', '#js-example-destroy button[data-behaviour="destroy"]',
+	function(e) {
+		$(selector, e.target.parentNode).rangeslider('destroy');
+	}).on('click', '#js-example-destroy button[data-behaviour="initialize"]',
+	function(e) {
+		$(selector, e.target.parentNode).rangeslider({
+			polyfill: false
+		});
+	});
+	$document.on('click', '#js-example-hidden button[data-behaviour="toggle"]',
+	function(e) {
+		var $container = $(e.target.previousElementSibling);
+		$container.toggle();
+	});
+	$element.rangeslider({
+		polyfill: false,
+		onInit: function() {
+			valueOutput(this.$element[0]);
+		},
+		onSlide: function(position, value) {
+			console.log('onSlide');
+			console.log('position: ' + position, 'value: ' + value);
+		},
+		onSlideEnd: function(position, value) {
+			console.log('onSlideEnd');
+			console.log('position: ' + position, 'value: ' + value);
+		}
+	});
+});
+</script>
+
+</body>
+</html>
