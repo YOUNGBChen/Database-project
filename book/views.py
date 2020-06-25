@@ -83,7 +83,7 @@ def returnbook(request):
         sum = userss.borrowed
         id = userss.idcard
         if users:
-            book.objects.filter(name = name).update(username = 0 )
+            bbook.objects.filter(name = name).update(username = 0 )
             sum = sum - 1
             User.objects.filter(username=username).update(borrowed=sum)
             return redirect('http://127.0.0.1:8000/book/success')
@@ -94,7 +94,7 @@ def returnbook(request):
 def checkbook(request):
     if request.method == "POST":
         username = request.POST.get('username')
-        books = book.objects.filter(username = username)
+        books = bbook.objects.filter(username = username)
         return render(request, "List2.html", {'books': books})
     return render(request,'Check_login.html')
 
